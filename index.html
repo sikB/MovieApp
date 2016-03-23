@@ -3,18 +3,22 @@
 <head>
 	<title>Movie App</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="footables/css/footable.core.css">
+	<link rel="stylesheet" type="text/css" href="footables/css/footable.standalone.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12 text-center">
-			<input type="text" placeholder="Search A Movie">
-			<input type="submit"class="btn btn-primary" value="search">
+		<form id="movie-form">
+			<input type="text" placeholder="Search A Movie" id="filter">
+			<input type="submit" class="btn btn-primary" value="search">
 			<select>
 				<option value="">Here is an option</option>
 				<option value="">Here is an option</option>
 			</select>
+			</form>
 		</div>
 	</div>
 
@@ -25,19 +29,7 @@
 	</div>
 
 	<div class="row">
-		<div class="col-sm-12">
-			<div class="col-sm-3">
-				A movie poster will go here
-			</div>
-			<div class="col-sm-3">
-				A movie poster will go here
-			</div>
-			<div class="col-sm-3">
-				A movie poster will go here
-			</div>
-			<div class="col-sm-3">
-				A movie poster will go here
-			</div>
+		<div id="poster-grid" class="col-sm-12">
 		</div>
 	</div>
 
@@ -49,6 +41,8 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="footables/js/footable.js"></script>
+<script type="text/javascript" src="footables/js/footable.filter.js"></script>
 <script type="text/javascript" src="MovieApp.js"></script>
 </body>
 </html>
