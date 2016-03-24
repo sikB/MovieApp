@@ -4,28 +4,51 @@ $(document).ready(function(){
 	var baseURL = 'https://api.themoviedb.org/3/';
 	var apiKey = '?api_key=48bf4a3fe9092e9030ced03151c835c4';
 	var configURL = baseURL + 'configuration' + apiKey;
+	var genreArray = [];
 
 	$.getJSON(configURL, function(configData){
 	 	imagePath = configData.images.base_url;
 	});
 
+	var genreURL = baseURL + 'genre/movie/list' + apiKey;
+	$.getJSON(genreURL, function(genreData){
+		// console.log(genreData);
+		for(i=0; i<genreData.genres.length; i++){
+			var genreID = genreData.genres[i].id;
+			var genreName = genreData.genres[i].name;
+			genreArray[genreID] = genreName;
+		}
+		var genreHTML = '';
+		for(i=0; i<genreArray.length; i++){
+			if(genreArray[i] != undefined){
+				genreHTML += '<input type="button" id="'+genreArray[i]+'" class="btn btn-default" value="'+genreArray[i]+'" >'
+			}
+		}
+		$('#genre-buttons').html(genreHTML);
+		// console.log(genreArray);
+	});
+
 	var nowPlaying = baseURL + 'movie/now_playing' + apiKey;
+	console.log(nowPlaying);
 
 	$.getJSON(nowPlaying, function(movieData){
-		console.log(movieData);
+		// console.log(movieData);
 		var newHTML = '';
 		for(i=0; i<movieData.results.length; i++){
 			var currPoster = imagePath + 'w300' + movieData.results[i].poster_path;
-			newHTML += '<div class="col-sm-3">';
+			var firstGenreID = movieData.results[i].genre_ids[0];
+			var genreName = genreArray[firstGenreID];
+			newHTML += '<div class="col-sm-3 now-playing ' + encodeURI(genreName) + '">';
 			newHTML += '<img src="' + currPoster + '">';
 			newHTML += '</div>';		
 		}
 		$('#poster-grid').html(newHTML);
+		getIsotope();
 		
 	});
 	
 	$('#movie-form').submit(function(event){
-		// var userSearch = $('.typeahead').val();
+		var userSearch = $('.typeahead').val();
 		var userSearch = $('#searchText').val();
 		var searchFilter = $('#searchFilter').val();
 		var searchURL = baseURL + 'search/' + searchFilter + apiKey + '&query=' + encodeURI(userSearch);
@@ -46,6 +69,16 @@ $(document).ready(function(){
 		});
 		event.preventDefault();
 	});
+	$('#comedy').click(function(){
+		$('#poster-grid').isotope({filter: '#35'})
+	})
+	function getIsotope(){
+	$('#poster-grid').isotope({
+  // options
+  	itemSelector: '.now-playing',
+  	layoutMode: 'fitRows'
+	});
+}
 });
 
 var substringMatcher = function(strs){
@@ -62,6 +95,17 @@ var substringMatcher = function(strs){
 	};
 };
 
+var arrayToSearch = [];
+for(i=1; i<=6; i++){
+var popularMovies = 'https://api.themoviedb.org/3/movie/popular?api_key=48bf4a3fe9092e9030ced03151c835c4&page=' + i;
+$.getJSON(popularMovies, function(popularM){
+	for(j=0; j<popularM.results.length; j++){
+		arrayToSearch.push(popularM.results[j].original_title);
+		}
+		// console.log(arrayToSearch);
+	});
+};
+
 var actors = [
 	'Brad Pitt',
 	'Michael Douglas',
@@ -75,15 +119,16 @@ $('#movie-form .typeahead').typeahead({
 },
 {
 	name: 'actors',
-	source: substringMatcher(actors)
+	source: substringMatcher(arrayToSearch)
 });
 
-
-
-
-
-
-
+// function getIsotope(){
+// 	$('#poster-grid').isotope({
+//   // options
+//   	itemSelector: '.now-playing',
+//   	layoutMode: 'fitRows'
+// 	});
+// }
 
 // var movieInput = $('#filter').val();
 // 	var res = encodeURI(movieInput);

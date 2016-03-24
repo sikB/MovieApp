@@ -1,11 +1,23 @@
 #poster-grid{
+
 	img{
 		width: 100%;
-		padding-bottom: 3%;
+		padding: 0  0% 5%;
 
 	}
 }
-.now-playing{
+.nowplaying{
 	font-family: 'Finger Paint', cursive;
 	font-size: 36px;
+
 }
+.now-playing{
+	height: 80%;
+  	height: 480px;
+  	width: 23%;
+}
+
+// .container{
+// 	background: url(http://gallery.yopriceville.com/var/albums/Backgrounds/Theater_Background.jpg?m=1414595400) no-repeat;
+// 	background-size: 1024px 1024px;
+// }
