@@ -5,6 +5,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="footables/css/footable.core.css">
 	<link rel="stylesheet" type="text/css" href="footables/css/footable.standalone.css">
+	<link href='https://fonts.googleapis.com/css?family=Finger+Paint' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
@@ -12,11 +13,13 @@
 	<div class="row">
 		<div class="col-sm-12 text-center">
 		<form id="movie-form">
-			<input type="text" placeholder="Search A Movie" id="filter">
+			<input type="text" placeholder="Search for.." id="searchText" class="typeahead">
 			<input type="submit" class="btn btn-primary" value="search">
-			<select>
-				<option value="">Here is an option</option>
-				<option value="">Here is an option</option>
+			<select id='searchFilter'>
+				<option value="movie" id="movie">Movie</option>
+				<option value="tv" id="tv">TV Show</option>
+				<option value="person" id="person">Actor</option>
+				<option value="multi" id="all" onselect="selected">All</option>
 			</select>
 			</form>
 		</div>
@@ -24,7 +27,7 @@
 
 	<div class="row">
 		<div id="page-heading" class="col-sm-12">
-			Now Playing
+			<span class="now-playing">Now Playing</span>
 		</div>
 	</div>
 
@@ -32,15 +35,13 @@
 		<div id="poster-grid" class="col-sm-12">
 		</div>
 	</div>
-
-
-
 </div>
 
 
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.min.js"></script>
 <script type="text/javascript" src="footables/js/footable.js"></script>
 <script type="text/javascript" src="footables/js/footable.filter.js"></script>
 <script type="text/javascript" src="MovieApp.js"></script>

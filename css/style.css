@@ -1,4 +1,11 @@
 /* line 2, ../sass/style.scss */
 #poster-grid img {
   width: 100%;
+  padding-bottom: 3%;
+}
+
+/* line 8, ../sass/style.scss */
+.now-playing {
+  font-family: 'Finger Paint', cursive;
+  font-size: 36px;
 }
