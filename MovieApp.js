@@ -21,12 +21,22 @@ $(document).ready(function(){
 		var genreHTML = '';
 		for(i=0; i<genreArray.length; i++){
 			if(genreArray[i] != undefined){
-				genreHTML += '<input type="button" id="'+genreArray[i]+'" class="btn btn-default" value="'+genreArray[i]+'" >'
+				genreHTML += '<input type="button" id="'+genreArray[i]+'" class="btn btn-default genre-button" value="'+genreArray[i]+'" >'
 			}
 		}
 		$('#genre-buttons').html(genreHTML);
+		addGenreClicks();
+
 		// console.log(genreArray);
 	});
+
+// 	function homeButton(){
+// 	var goHome = baseURL + 'movie/now_playing' + apiKey;
+// 	$('#home-button').click(function(){
+// 		goHome;
+// 		return;
+// 	});
+// }
 
 	var nowPlaying = baseURL + 'movie/now_playing' + apiKey;
 	console.log(nowPlaying);
@@ -42,6 +52,12 @@ $(document).ready(function(){
 			newHTML += '<img src="' + currPoster + '">';
 			newHTML += '</div>';		
 		}
+		function homeButton(){
+			$('#home-button').click(function(){
+				nowPlaying;
+			})
+		}
+		homeButton();
 		$('#poster-grid').html(newHTML);
 		getIsotope();
 		
@@ -64,14 +80,13 @@ $(document).ready(function(){
 				newHTML += '<img src="' + currPoster + '">';
 				newHTML += '</div>';		
 			}
-		$('#poster-grid').html(newHTML);
-		
+		$('#poster-grid').html(newHTML);		
 		});
 		event.preventDefault();
 	});
-	$('#comedy').click(function(){
-		$('#poster-grid').isotope({filter: '#35'})
-	})
+
+});
+
 	function getIsotope(){
 	$('#poster-grid').isotope({
   // options
@@ -79,7 +94,13 @@ $(document).ready(function(){
   	layoutMode: 'fitRows'
 	});
 }
-});
+
+function addGenreClicks(){
+	$('.genre-button').click(function(){
+		var theID = '.' + $(this).attr('id')
+		$('#poster-grid').isotope({filter: theID});
+	})
+}
 
 var substringMatcher = function(strs){
 	return function findMatches (q, cb){
