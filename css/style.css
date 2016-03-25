@@ -4,15 +4,29 @@
   padding: 0  0% 5%;
 }
 
-/* line 9, ../sass/style.scss */
+/* line 8, ../sass/style.scss */
+.row {
+  background-color: #da0b0b;
+}
+
+/* line 11, ../sass/style.scss */
 .nowplaying {
   font-family: 'Finger Paint', cursive;
   font-size: 36px;
+  text-shadow: 1px 1px 0 #ffffff;
 }
 
-/* line 14, ../sass/style.scss */
+/* line 17, ../sass/style.scss */
 .now-playing {
   height: 80%;
   height: 480px;
   width: 23%;
+}
+
+/* line 22, ../sass/style.scss */
+body {
+  background: url("https://i.ytimg.com/vi/2kDxNq6Vq6I/maxresdefault.jpg"), url("https://i.ytimg.com/vi/2kDxNq6Vq6I/maxresdefault.jpg");
+  background-size: 350px  370px;
+  background-position: left top, right top, center;
+  background-repeat: repeat-y;
 }

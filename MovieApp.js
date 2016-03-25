@@ -30,14 +30,6 @@ $(document).ready(function(){
 		// console.log(genreArray);
 	});
 
-// 	function homeButton(){
-// 	var goHome = baseURL + 'movie/now_playing' + apiKey;
-// 	$('#home-button').click(function(){
-// 		goHome;
-// 		return;
-// 	});
-// }
-
 	var nowPlaying = baseURL + 'movie/now_playing' + apiKey;
 	console.log(nowPlaying);
 
@@ -52,11 +44,7 @@ $(document).ready(function(){
 			newHTML += '<img src="' + currPoster + '">';
 			newHTML += '</div>';		
 		}
-		function homeButton(){
-			$('#home-button').click(function(){
-				nowPlaying;
-			})
-		}
+
 		homeButton();
 		$('#poster-grid').html(newHTML);
 		getIsotope();
@@ -94,6 +82,11 @@ $(document).ready(function(){
   	layoutMode: 'fitRows'
 	});
 }
+	function homeButton(){
+	$('#home-button').click(function() {
+    location.reload();
+});
+	}
 
 function addGenreClicks(){
 	$('.genre-button').click(function(){

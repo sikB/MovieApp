@@ -3,18 +3,29 @@
 	img{
 		width: 100%;
 		padding: 0  0% 5%;
-
 	}
+}
+.row{
+	background-color: #da0b0b;
 }
 .nowplaying{
 	font-family: 'Finger Paint', cursive;
 	font-size: 36px;
+	text-shadow: 1px 1px 0 #ffffff;
 
 }
 .now-playing{
 	height: 80%;
   	height: 480px;
   	width: 23%;
+}
+body{
+	// background-color: #e60000;
+	background: url('https://i.ytimg.com/vi/2kDxNq6Vq6I/maxresdefault.jpg'), url('https://i.ytimg.com/vi/2kDxNq6Vq6I/maxresdefault.jpg');
+	background-size: 350px  370px;
+	background-position: left top, right top, center;
+	background-repeat: repeat-y;
+
 }
 
 // .container{
